@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
 
     env_file:
-      - ./web/.env.dev
+      - ./web/.env.prod
     volumes:
       - ./web:/usr/src/app/
     depends_on:
