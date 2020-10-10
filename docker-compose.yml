@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  client:
+    build:
+     context: ./front
+     dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+
+  database:
+    image: "postgres" # use latest official postgres version
+    env_file:
+      - database.env # configure postgres
+    volumes:
+      - database-data:/var/lib/postgresql/data/ # persist data
+
+networks:
+   front:
+      driver: bridge
+   web:
+      driver: bridge
+volumes:
+   database-data:
