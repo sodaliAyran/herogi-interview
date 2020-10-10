@@ -3,8 +3,14 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
-    DEBUG = False
-    TESTING = False
+    env = os.getenv("FLASK_ENV")
+    if  env == "production":
+        DEBUG = False
+        TESTING = False
+    else:
+        DEBUG=True
+        TESTING=True
+        DEVELOPMENT=True
     CSRF_ENABLED = True
     SECRET_KEY = 'SECRET_KEY'
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', "sqlite://")
@@ -25,5 +31,8 @@ class DevelopmentConfig(Config):
     DEBUG = True
 
 
+
 class TestingConfig(Config):
     TESTING = True
+    DEBUG=True
+    SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
