@@ -20,5 +20,7 @@ COPY . /usr/src/app/
 
 EXPOSE 5000
 
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
-CMD ["gunicorn", "--bind", 0.0.0.0:5000", "manage:app"]
+RUN chmod a+x ./entrypoint.sh
+RUN pytest
+
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "manage:create_app()"]
