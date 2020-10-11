@@ -3,13 +3,9 @@ from project import dba
 
 api_bp = Blueprint('api', __name__)
 
-@api_bp.route('/get_values', methods=["GET", "POST"])
+@api_bp.route('/get_values', methods=["GET"])
 def get_values():
-    if request.json:
-        sort = request.json.get("sort", None)
-        results = dba.get_values(sort=sort)
-    else:
-        results = dba.get_values()
+    results = dba.get_values()
 
     return jsonify(results)
 
