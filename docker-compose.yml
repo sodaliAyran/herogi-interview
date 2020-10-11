@@ -1,16 +1,31 @@
 version: '3.7'
 services:
+  client:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    volumes:
+       - ./front:/usr/src/app
+       - /usr/src/app/node_modules
+    networks:
+      - backend
   web:
     build:
       context: ./web
       dockerfile: Dockerfile.prod
-
+    ports:
+      - "5000:5000"
     env_file:
       - ./web/.env.prod
     volumes:
       - ./web:/usr/src/app/
     depends_on:
       - database
+    networks:
+      - frontend
+      - backend
 
   database:
     image: "postgres" # use latest official postgres version
@@ -19,14 +34,10 @@ services:
     volumes:
       - ./database-data:/var/lib/postgresql/data/ # persist data
     networks:
-      - default
+      - backend
 
-  nginx:
-    build: nginx
-    ports:
-      - 1337:80
-    depends_on:
-      - web
 networks:
-  default:
-  bridge:
+   frontend:
+      driver: bridge
+   backend:
+      driver: bridge
