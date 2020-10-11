@@ -5,7 +5,8 @@ api_bp = Blueprint('api', __name__)
 
 @api_bp.route('/get_values', methods=["GET"])
 def get_values():
-    results = dba.get_values()
+    # Had to do this because Javascript can't seem to sort floats
+    results = sorted(dba.get_values(), key=lambda k: k["average_pace"])
 
     return jsonify(result=results)
 

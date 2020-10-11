@@ -1,9 +1,11 @@
 from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from flask_cors import CORS
 
 db = SQLAlchemy()
 ma = Marshmallow()
+cors = CORS()
 
 def create_app(testing=False):
     app = Flask(__name__)
@@ -19,6 +21,7 @@ def create_app(testing=False):
 
         db.init_app(app)
         ma.init_app(app)
+        cors.init_app(app)
 
         db.drop_all()
         db.create_all()
