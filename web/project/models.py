@@ -10,11 +10,13 @@ class User(db.Model):
     paces = db.relationship("Pace", backref="user", lazy=True)
 
     def __init__(self, username, age, gender, id=None):
+        age = int(age)
         if id :
             self.id = id
         self.username = username
         self.age = age
         self.gender = gender
+
 
 class Pace(db.Model):
     __tablename__ = "pace"
@@ -26,5 +28,5 @@ class Pace(db.Model):
 
     def __init__(self, user_id, total_time, distance):
         self.user_id = user_id
-        self.total_time = total_time
-        self.distance = distance
+        self.total_time = int(total_time)
+        self.distance = int(distance)
