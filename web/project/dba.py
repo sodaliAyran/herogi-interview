@@ -7,5 +7,5 @@ def get_values():
     schema = PaceSchema()
     paces = Pace.query.all()
     data = [schema.dump(pace) for pace in paces ]
-
+    
     return data
