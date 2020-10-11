@@ -1,24 +1,14 @@
-# Pull latest official node image
-FROM node:latest
+# stage1 - build react app first
+FROM node:latest as build
+WORKDIR /usr/src/app
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+COPY package.json /usr/src/app/
+RUN yarn --silent
+COPY . /usr/src/app
+RUN yarn build
 
-# Expose ports
-EXPOSE 3000
-EXPOSE 35729
-
-# Set working directory
-WORKDIR /app
-
-# Add /app/node_modules/.bin to environment variables
-ENV PATH /app/node_modules/.bin:$PATH
-
-# Copy package files and install app dependencies
-COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
-RUN npm install
-RUN npm install react-scripts -g
-
-# Add React app to working directory
-ADD . /app
-
-# Start the React app
-CMD ["npm", "start"]
+# stage 2 - build the final image and copy the react build files
+FROM nginx:1.17.8-alpine
+COPY --from=build /usr/src/app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

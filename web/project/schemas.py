@@ -30,7 +30,7 @@ class PaceSchema(ma.SQLAlchemySchema):
     total_time = ma.auto_field()
     distance = ma.auto_field()
     average_pace = ma.Function(lambda obj: \
-    (int(obj.distance) / 1000) / int(obj.total_time))
+     int(obj.total_time) / (int(obj.distance) / 1000))
     username = ma.Function(lambda obj: obj.user.username)
     age = ma.Function(lambda obj: obj.user.age)
     gender = ma.Function(lambda obj: obj.user.gender)
