@@ -1,23 +1,49 @@
-import React from 'react';
-import { useTable, useSortBy } from 'react-table';
+import React, { Fragment } from 'react';
+import { useTable, useSortBy, useFilters,
+  useExpanded, usePagination } from 'react-table';
+import { Filter, DefaultColumnFilter } from './filters';
+import { Table, Row, Col, Button, Input, CustomInput } from 'reactstrap';
 
-export default function Table({ columns, data }) {
+export default function TableContainer({ columns, data }) {
   // Use the useTable Hook to send the columns and data to build the table
   const {
-    getTableProps, // table props from react-table
-    getTableBodyProps, // table body props from react-table
-    headerGroups, // headerGroups, if your table has groupings
-    rows, // rows for the table based on the data passed
-    prepareRow // Prepare the row (this function needs to be called for each row before getting the row props)
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    gotoPage,
+    nextPage,
+    previousPage,
+    setPageSize,
+    state: {pageIndex, pageSize},
+    prepareRow
   } = useTable({
     columns,
     data,
+    defaultColumn: { Filter: DefaultColumnFilter },
+    initialState: { pageIndex: 0, pageSize: 15}
   },
-  useSortBy
+  useFilters,
+  useSortBy,
+  useExpanded,
+  usePagination
 );
 
+const onChangeInSelect = event => {
+  setPageSize(Number(event.target.value))
+}
+
+const onChangeInInput = event => {
+  const page = event.target.value ? Number(event.target.value) - 1 : 0
+  gotoPage(page)
+}
+
   return (
-    <table {...getTableProps()}>
+    <Fragment>
+    <Table bordered hover {...getTableProps()}>
       <thead>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -31,13 +57,15 @@ export default function Table({ columns, data }) {
                     : ""
                 }
               >
-              {column.render("Header")}</th>
+              {column.render("Header")}
+                <Filter column={column} />
+              </th>
             ))}
           </tr>
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
-        {rows.map((row, i) => {
+        {page.map((row, i) => {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
@@ -48,6 +76,50 @@ export default function Table({ columns, data }) {
           );
         })}
       </tbody>
-    </table>
+    </Table>
+
+    <Row style={{ maxWidth: 1000, margin: "0 auto", textAlign: "center" }}>
+   <Col md={2}>
+     <Button
+       color="primary"
+       onClick={previousPage}
+       disabled={!canPreviousPage}
+     >
+       {"<"}
+     </Button>
+   </Col>
+   <Col md={3} style={{ marginTop: 7 }}>
+     Page{" "}
+     <strong>
+       {pageIndex + 1} of {pageOptions.length}
+     </strong>
+   </Col>
+   <Col md={2}>
+     <Input
+       type="number"
+       min={1}
+       style={{ width: 70 }}
+       max={pageOptions.length}
+       defaultValue={pageIndex + 1}
+       onChange={onChangeInInput}
+     />
+   </Col>
+   <Col md={3}>
+     <CustomInput type="select" value={pageSize} onChange={onChangeInSelect}>
+       >
+       {[10, 15, 20, 30, 40, 50].map(pageSize => (
+         <option key={pageSize} value={pageSize}>
+           Show {pageSize}
+         </option>
+       ))}
+     </CustomInput>
+   </Col>
+   <Col md={2}>
+     <Button color="primary" onClick={nextPage} disabled={!canNextPage}>
+       {">"}
+     </Button>
+   </Col>
+ </Row>
+    </Fragment>
   );
 }

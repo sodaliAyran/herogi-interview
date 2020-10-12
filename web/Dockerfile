@@ -20,5 +20,4 @@ COPY . /usr/src/app/
 
 EXPOSE 5000
 
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
-CMD ["python", "manage.py", "run", "-h", "0.0.0.0"]
+CMD ["flask", "run", "-h", "0.0.0.0"]
