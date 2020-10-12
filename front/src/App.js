@@ -1,6 +1,8 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import './App.css';
-import Table from './Table';
+import TableContainer from './Table';
+import "bootstrap/dist/css/bootstrap.min.css"
+import { SelectColumnFilter } from './filters';
 
 function App() {
 
@@ -10,24 +12,37 @@ function App() {
           Header: "Runner Table",
           columns: [
             {
+              Header: "Age Group",
+              accessor: "age_group",
+              Filter: SelectColumnFilter,
+              filter: "equals",
+              disableSortBy: true
+            },
+            {
               Header: "Name",
-              accessor: "username"
+              accessor: "username",
+              disableFilters: true,
+              disableSortBy: true
             },
             {
               Header: "Age",
-              accessor: "age"
+              accessor: "age",
+              disableFilters: true
             },
             {
               Header: "Gender",
-              accessor: "gender"
+              accessor: "gender",
+              disableFilters: true
             },
             {
               Header: "Total Time (min)",
-              accessor: "total_time"
+              accessor: "total_time",
+              disableFilters: true
             },
             {
               Header: "Distance (m)",
-              accessor: "distance"
+              accessor: "distance",
+              disableFilters: true
             },
             {
               Header: "Average Pace (min/km)",
@@ -40,7 +55,8 @@ function App() {
                   </>
                 );
               },
-              sortType: 'basic'
+              sortType: 'basic',
+              disableFilters: true
             },
           ]
         },
@@ -59,8 +75,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Table columns={columns} data={data} />
+        <div className="App">
+  <TableContainer columns={columns} data={data} />
     </div>
   );
 }
