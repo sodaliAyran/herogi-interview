@@ -1,14 +1,21 @@
-# stage1 - build react app first
-FROM node:latest as build
-WORKDIR /usr/src/app
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
-COPY package.json /usr/src/app/
-RUN yarn --silent
-COPY . /usr/src/app
-RUN yarn build
+# pull official base image
+FROM node:latest
 
-# stage 2 - build the final image and copy the react build files
-FROM nginx:1.17.8-alpine
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# set working directory
+WORKDIR /app
+
+EXPOSE 3000
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package.json /app
+
+RUN npm install --silent
+
+# add app
+COPY . /app
+
+# start app
+CMD ["npm", "start"]
