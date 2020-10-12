@@ -14,7 +14,6 @@ export default function TableContainer({ columns, data }) {
     canPreviousPage,
     canNextPage,
     pageOptions,
-    pageCount,
     gotoPage,
     nextPage,
     previousPage,
