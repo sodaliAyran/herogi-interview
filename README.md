@@ -158,7 +158,7 @@ There are also test that I wrote just do show you that I can actually write test
 
 ### Frontend
 
-Well I'm not a frontend expert therefore it doesn't look good but then again maybe you should have used Excel for displaying data on a table. I used react table to display the data. It was interesting cause when using react table you do everything by using functions. So I'm pretty sure it's quite lightweight. But that didn't stop me from importing some heavy libraries that I only used two maybe three classes of. A small price for salvation. You can sort data by clicking the headers and filter age groups by selecting one. There is also pagination but it doesn't do anything since there isn't much data.
+Well I'm not a frontend expert therefore it doesn't look good but then again maybe you should have used Excel for displaying data on a table. I used react table to display the data. It was interesting cause when using react table you do everything by using functions. So I'm pretty sure it's quite lightweight. But that didn't stop me from importing some heavy libraries that I only used two maybe three classes of. A small price for salvation. You can sort data by clicking the headers and filter age groups by selecting one. There is also pagination but it doesn't do anything since there isn't much data. Finally the app runs on production with nginx.
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -166,9 +166,9 @@ Well I'm not a frontend expert therefore it doesn't look good but then again may
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **appreciated**.
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Feature Branch (`$ git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`$ git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`$ git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 
@@ -190,14 +190,13 @@ Project Link: [https://github.com/sodaliAyran/herogi-interview](https://github.c
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [Flask SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
+* [Flask-Marshmallow](https://flask-marshmallow.readthedocs.io/en/latest/)
+* [pytest](https://docs.pytest.org/en/stable/)
+* [gunicorn](https://gunicorn.org/)
+* [Postgresql](https://www.postgresql.org/)
+* [Docker](https://www.docker.com/)
+* [Reactjs](https://reactjs.org/)
+* [React Table](https://github.com/tannerlinsley/react-table)
+* [nginx](https://www.nginx.com/)
