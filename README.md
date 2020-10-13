@@ -1,21 +1,3 @@
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-<br />
-<p align="center">
 
   <h3 align="center">Herogi Interview Runner Profile</h3>
 
@@ -27,7 +9,6 @@
     ·
     <a href="https://github.com/sodaliAyran/herogi-interview/issues">Request Feature</a>
   </p>
-</p>
 
 
 
@@ -65,7 +46,7 @@ Of course, no one template will serve all projects since your needs may be diffe
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
 ### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 * [Reactjs](https://reactjs.org/)
 * [Postgresql](https://www.postgresql.org/)
