@@ -21,6 +21,11 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
+* [Decisions](#decisions)
+  * [Why Microservices?](#why-micro-services)
+  * [Why Postgresql?](#why-postgresl)
+  * [Why Flask?](#why-flask?)
+  * [Why Docker, Docker Compose?](#why-docker-docker-compose)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -31,8 +36,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 This is a single page including a backend, a frontend and a database. The problem was to create a single page web application with the provided data that does the following:
 * Runners based on their average pace. (Time(minute) per kilometer)
@@ -70,25 +73,45 @@ To get a local copy up and running follow these simple example steps.
 ```sh
 git clone https://github.com/your_username_/Project-Name.git
 ```
-3. Install NPM packages
+3. Build the containers
 ```sh
-npm install
+docker-compose build
 ```
-4. Enter your API in `config.js`
-```JS
-const API_KEY = 'ENTER YOUR API';
+4. Run them
+```sh
+docker-compose up
 ```
 
+Tests will run automatically.
+After that just hit http://localhost:3000 
+
+or
+
+```sh
+curl http://localhost:5000/get_values
+```
+
+for API access.
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+Here is a quick rundown of how to start up and use this project. 
 
 
+<!-- DECISION EXPILAINING -->
+
+## Decisions 
+
+### Why Microservices?
+
+It' simple, because they are scalable, easily managable, reusable, plugable... and much more.
+To expand upon this, for example if you want to scale this system using Kubernetes or something similar, you can do it.
+If you want to monitor different parts by using different applications, you can do it.
+If you want to change the database to another one or get rid of SQL for some NOSQL database, you can do it.
+If you want to replace backend with something like Scala without touching anything on the database and frontend, YOU CAN DO IT.
+All it takes is just a little bit(or none) of code refactoring and some changes in the enviroment variables and voilà you are all set. That's the power of microservices
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -113,9 +136,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+İlke Elvan - [@ilkebey](https://instagram.com/ilkebey) - ilkeelvan@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/sodaliAyran/herogi-interview](https://github.com/sodaliAyran/herogi-interview)
 
 
 
