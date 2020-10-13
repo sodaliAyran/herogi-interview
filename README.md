@@ -76,11 +76,11 @@ To get a local copy up and running follow these simple example steps.
 ```sh
 $ git clone https://github.com/sodaliayran/herogi-interview.git
 ```
-3. Build the containers
+2. Build the containers
 ```sh
 $ docker-compose build
 ```
-4. Run them
+3. Run them
 ```sh
 $ docker-compose up
 ```
@@ -101,12 +101,39 @@ for API access.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Here is a quick demonstration of how to start up and use this project. 
+Here is a quick demonstration of how to start up and use this project.
 
+```sh
+$ git clone https://github.com/sodaliayran/herogi-interview.git
+```
+
+![Git Clone](https://media.giphy.com/media/p2UlupZCo5icx2QeHf/giphy.gif)
+
+```sh
+$ docker-compose build
+```
+
+![Compose Build](https://media.giphy.com/media/VcnkNAdUWLdrvAnvXr/giphy.gif)
+
+```sh
+$ docker-compose up
+```
+
+![Compose Up](https://media.giphy.com/media/neweaCTBymSTHejR18/giphy.gif)
+
+```sh
+$ curl http://localhost:5000/get_values
+```
+
+![Get Values](https://media.giphy.com/media/ryPyad2CYy1DKmB4xU/giphy.gif)
+
+Try it on browser.
+
+![Browser](https://media.giphy.com/media/9oV6kyP6bDdziAHSnB/giphy.gif )
 
 <!-- DECISION EXPILAINING -->
 
-## Decisions 
+## Decisions
 
 ### Why Microservices?
 
