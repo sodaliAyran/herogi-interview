@@ -45,7 +45,7 @@ This is a single page including a backend, a frontend and a database. The proble
 * Provide sorting functionality based on average pace, distance and total time
 * Also include username, age, gender in the UI
 
-Also there was a Bonus points section with the following:
+Also there was a Bonus Points Section with the following:
 * An option to group users by their age group (group1: 20-30, group2: 30-40, group3: 40 - 60) -> Which I did
 * Use React --> Which I also did
 * Use Scala --> That is something I won't do for extra points.
@@ -74,24 +74,24 @@ To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo
 ```sh
-git clone https://github.com/sodaliayran/herogi-interview.git
+$ git clone https://github.com/sodaliayran/herogi-interview.git
 ```
 3. Build the containers
 ```sh
-docker-compose build
+$ docker-compose build
 ```
 4. Run them
 ```sh
-docker-compose up
+$ docker-compose up
 ```
 
-Tests will run automatically.
-After that just hit http://localhost:3000 on your browser
+Tests will run automatically when you build the image. (Not ideal because why should you download a testing library to you production system but I like seeing the dots.)
+After that just hit http://localhost:3000 on your browser.
 
 or
 
 ```sh
-curl http://localhost:5000/get_values
+$ curl http://localhost:5000/get_values
 ```
 
 for API access.
@@ -118,7 +118,7 @@ All it takes is just a little bit(or none) of code refactoring and some changes 
 
 ### Why Postgresql?
 
-No reason. I could have used any other relational database or non relational database(Although the problem was more appropriate for a relational one.) and it still would have worked fine. I just like Postgresql.
+No reason. I could have used any other relational database or non relational database (Although the problem was more appropriate for a relational one.) and it still would have worked fine. I just like Postgresql.
 
 ### Why Flask?
 
@@ -153,7 +153,12 @@ While I'm at it I should also mention that there were some missing information i
 
 ### Backend
 
+A simple overkill middleware app factory with different configurations for development and production environments. I used marshmallow to serialize database objects. If you check the schemas you can see that I'm calculating the age group and the average pace while serializing the data. I could have added that fields while seeding the database but I assumed the database already existed with the given fields and I had no permission to add or remove fields on the database.
+There are also test that I wrote just do show you that I can actually write test and TDD is something I do occasionally. The tests themselves don't do much (They are just HTTP GET functions) but they are there. You can run the tests with `$ pytest` after you installed the requirements. Why I didn't use unittest for such simple tests you might ask. The answer is I thought I already overkilled everything might as well do the same thing to tests. Lastly I should also mention that the middleware runs with gunicorn, so it's production ready.
 
+### Frontend
+
+Well I'm not a frontend expert therefore it doesn't look good but then again maybe you should have used Excel for displaying data on a table. I used react table to display the data. It was interesting cause when using react table you do everything by using functions. So I'm pretty sure it's quite lightweight. But that didn't stop me from importing some heavy libraries that I only used two maybe three classes of. A small price for salvation. You can sort data by clicking the headers and filter age groups by selecting one. There is also pagination but it doesn't do anything since there isn't much data.
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -172,7 +177,6 @@ Contributions are what make the open source community such an amazing place to b
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
 
 
 <!-- CONTACT -->
