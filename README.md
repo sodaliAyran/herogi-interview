@@ -85,7 +85,8 @@ $ docker-compose build
 $ docker-compose up
 ```
 
-Tests will run automatically when you build the image. (Not ideal because why should you download a testing library to you production system but I like seeing the dots.)
+Tests will run automatically when you build the image. (Not ideal because you shouldn't download a testing library to your production system but I did it because I like seeing the dots...)
+
 After that just hit http://localhost:3000 on your browser.
 
 or
