@@ -12,11 +12,11 @@ services:
   web:
     build:
       context: ./web
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     env_file:
-      - ./web/.env.prod
+      - ./web/.env
     volumes:
       - ./web:/usr/src/app/
     depends_on:
@@ -29,20 +29,21 @@ services:
   client:
     build:
       context: ./front
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile
     ports:
-      - "3000:80"
+      - "3000:3000"
     volumes:
        - ./front:/app
        - /app/node_modules
-    networks:
-      - frontend
-    restart: always
+    stdin_open: true
     depends_on:
       - web
+    restart:  always
+    networks:
+      - frontend
 
 networks:
-   frontend:
+  frontend:
       driver: bridge
-   backend:
+  backend:
       driver: bridge
