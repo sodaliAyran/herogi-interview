@@ -71,7 +71,7 @@ To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+git clone https://github.com/sodaliayran/herogi-interview.git
 ```
 3. Build the containers
 ```sh
@@ -112,6 +112,18 @@ If you want to monitor different parts by using different applications, you can 
 If you want to change the database to another one or get rid of SQL for some NOSQL database, you can do it.
 If you want to replace backend with something like Scala without touching anything on the database and frontend, YOU CAN DO IT.
 All it takes is just a little bit(or none) of code refactoring and some changes in the enviroment variables and voilà you are all set. That's the power of microservices
+
+### Why Postgresql?
+
+No reason. I could have used any other relational database or non relational database(Although the problem was more appropriate for a relational one.) and it still would have worked fine. I just like Postgresql.
+
+### Why Flask?
+
+There was a bonus for using Scala so why did I choose Flask for backend? That's because I'm used to it. I have developed many web services using Flask and I can definitely say that it gets the job done pretty well. To add more to this Flask is really easy to use and deploy, has many powerful community created plugins and written in Python. A language that get more popular day by day. Comparing Scala to Python one can say without a doubt that Scala lost it's popularity, and although it still has uses on Big Data, many companies abandoned Scala based web applications.
+
+### Why Reactjs?
+
+
 
 <!-- CONTRIBUTING -->
 ## Contributing
