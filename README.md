@@ -2,7 +2,7 @@
   <h3 align="center">Herogi Interview Runner Profile</h3>
 
   <p align="center">
-     A fully fledged, production ready, micro service based application to list runners and their paces.
+     A fully fledged, production ready, microservice based application to list runners and their paces.
     <br />
     ·
     <a href="https://github.com/sodaliAyran/herogi-interview/issues">Report Bug</a>
@@ -26,7 +26,10 @@
   * [Why Postgresql?](#why-postgresl)
   * [Why Flask?](#why-flask)
   * [Why Docker, Docker Compose?](#why-docker-docker-compose)
-* [Roadmap](#roadmap)
+* [Project Rundown](#project-rundown)
+  * [Database](#database)
+  * [Backend](#backend)
+  * [Frontend](#frontend)
 * [Contributing](#contributing)
 * [License](#license)
 * [Contact](#contact)
@@ -83,7 +86,7 @@ docker-compose up
 ```
 
 Tests will run automatically.
-After that just hit http://localhost:3000 
+After that just hit http://localhost:3000 on your browser
 
 or
 
@@ -97,7 +100,7 @@ for API access.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Here is a quick rundown of how to start up and use this project. 
+Here is a quick demonstration of how to start up and use this project. 
 
 
 <!-- DECISION EXPILAINING -->
@@ -123,12 +126,39 @@ There was a bonus for using Scala so why did I choose Flask for backend? That's 
 
 ### Why Reactjs?
 
+Ahhh React, the new thing Papa Facebook gave us. It's on everyone's minds and hands until it'll got replaced of course. You might be suprised but I used React not because I want the bonus points but because I recently started taking a React Native course and wanted have some practice with the real thing as well. Normally I would have used pure HTML, CSS and Javascript because that's what I'm used to but I believe it's time that I should embrace the future since HTML+CSS+Javascript combo has run it's time. Also it's pretty fast creating a React App from scratch.  
+
+### Why Docker, Docker Compose?
+
+I'm building a microservice architecture, of course I have to use some kind of containerization. Also I'm building severeal services that communicate with each. I have to use docker-compose so that I don't have to rebuild and deploy each one them everytime I make a change.
+
+## Project Rundown
+
+### Database
+
+Here is the provided data fields
+
+User:
+- id (int, primary_key)
+- username (string)
+- age (integer)
+
+Pace:
+- user_id (foreign_key user)
+- total_time_in_minutes (int)
+- distance_in_meters (int)
+
+Using these I created two tables. The problem didn't specify using a database but I did it just for the sake of it. Do I think it's an overkill. Yes, yes I do.
+While I'm at it I should also mention that there were some missing information in the provided data. For example there was a Pace belonged to a User with the id 4 but there wasn't any User with the id 4 on the Users table. So I took to liberty to add myself as the User with id 4. Also, project requirements stated that in the end result User gender should be shown but the gender information wasn't included in the data. So again I filled in the information based on their usernames. (I know I'm in no place to assign gender roles to  people based on their names but I had to make a choice. And still I value represantation so I made user1 gender queer so that he/she/etc can be whatever he/she/etc. want. Also I'm pretty sure you can't have numbers in your name. Unless your father worths 93 billion USD)
+
+### Backend
+
 
 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **appreciated**.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -167,23 +197,3 @@ Project Link: [https://github.com/sodaliAyran/herogi-interview](https://github.c
 * [Sticky Kit](http://leafo.net/sticky-kit)
 * [JVectorMap](http://jvectormap.com)
 * [Font Awesome](https://fontawesome.com)
-
-
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
